@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         xivanalysis Link on FF Logs
 // @description  Create Links to xivanalysis on FF Logs Reports
-// @version      1.0.4
+// @version      1.0.5
 // @author       xPumaa
 // @license      GPL-3.0; http://www.gnu.org/licenses/gpl-3.0.txt
 // @namespace    https://github.com/xPumaa/xivanalysis-link-on-fflogs
@@ -37,13 +37,14 @@
         } else {
           logCode = pageURL.substr(slashIndex + 1, hashtagIndex - slashIndex - 1);
         }
-      } else if (slashCount == 5) {
+      } else if (slashCount >= 5) {
         slashIndex = pageURL.split('/', 4).join('/').length;
         if (hashtagIndex == -1) {
           logCode = pageURL.substr(slashIndex + 1);
         } else {
           logCode = pageURL.substr(slashIndex + 1, hashtagIndex - slashIndex - 1);
         }
+        logCode = logCode.replace(/\//g, '');
       }
 
       a1.classList.add('all-fights-entry');
