@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         xivanalysis Link on FF Logs
 // @description  Create Links to xivanalysis on FF Logs Reports
-// @version      1.0.3
+// @version      1.0.4
 // @author       xPumaa
 // @license      GPL-3.0; http://www.gnu.org/licenses/gpl-3.0.txt
 // @namespace    https://github.com/xPumaa/xivanalysis-link-on-fflogs
@@ -20,6 +20,7 @@
       var logCode, s1, s2, img, d1, d2;
       var pageURL = window.location.href;
       var baseURL = 'https://xivanalysis.com/find/';
+      var slashCount = pageURL.match(/\//g).length;
       var slashIndex = pageURL.lastIndexOf('/');
       var hashtagIndex = pageURL.lastIndexOf('#');
       var a1 = document.createElement('a');
@@ -30,11 +31,19 @@
       d1 = document.getElementById('fight-details--2-0');
       d2 = document.getElementById('top-level-view-tabs');
 
-      if (hashtagIndex == -1)
-      {
-        logCode = pageURL.substr(slashIndex + 1);
-      } else {
-        logCode = pageURL.substr(slashIndex + 1, hashtagIndex - slashIndex - 1);
+      if (slashCount == 4) {
+        if (hashtagIndex == -1) {
+          logCode = pageURL.substr(slashIndex + 1);
+        } else {
+          logCode = pageURL.substr(slashIndex + 1, hashtagIndex - slashIndex - 1);
+        }
+      } else if (slashCount == 5) {
+        slashIndex = pageURL.split('/', 4).join('/').length;
+        if (hashtagIndex == -1) {
+          logCode = pageURL.substr(slashIndex + 1);
+        } else {
+          logCode = pageURL.substr(slashIndex + 1, hashtagIndex - slashIndex - 1);
+        }
       }
 
       a1.classList.add('all-fights-entry');
