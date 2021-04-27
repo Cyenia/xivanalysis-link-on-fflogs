@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         xivanalysis Link on FF Logs
 // @description  Create Links to xivanalysis on FF Logs Reports
-// @version      1.0.6
+// @version      1.0.7
 // @author       xPumaa
 // @license      GPL-3.0; http://www.gnu.org/licenses/gpl-3.0.txt
 // @namespace    https://github.com/xPumaa/xivanalysis-link-on-fflogs
@@ -52,7 +52,7 @@
       }
 
       a1.classList.add('all-fights-entry');
-      a1.href = baseURL + logCode;
+      a1.href = baseURL + '/find/' + logCode;
       a1.innerText = 'xivanalysis.com';
       a1.id = 'analysis-entry';
       a1.target = '_blank';
