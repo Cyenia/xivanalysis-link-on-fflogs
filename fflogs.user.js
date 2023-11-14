@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         xivanalysis Link on FF Logs
 // @description  Create Links to xivanalysis on FF Logs Reports
-// @version      1.0.7
+// @version      1.0.8
 // @author       xPumaa
 // @license      GPL-3.0; http://www.gnu.org/licenses/gpl-3.0.txt
 // @namespace    https://github.com/xPumaa/xivanalysis-link-on-fflogs
 // @updateURL    https://github.com/xPumaa/xivanalysis-link-on-fflogs/raw/master/fflogs.user.js
+// @downloadURL  https://github.com/xPumaa/xivanalysis-link-on-fflogs/raw/master/fflogs.user.js
 // @icon         https://xivanalysis.com/logo.png
 // @match        https://*.fflogs.com/reports/*
 // ==/UserScript==
