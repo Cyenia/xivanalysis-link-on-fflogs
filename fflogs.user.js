@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         xivanalysis Link on FF Logs
 // @description  Create Links to xivanalysis on FF Logs Reports
-// @version      1.1.0
+// @version      1.1.1
 // @author       Cyenia
 // @license      GPL-3.0; http://www.gnu.org/licenses/gpl-3.0.txt
 // @namespace    https://github.com/Cyeniia/xivanalysis-link-on-fflogs
@@ -31,6 +31,7 @@
       var d1 = document.getElementById('fight-details--2-0');
       var d2 = document.getElementById('top-level-view-tabs');
       var logCode = window.location.pathname.split('/')[2]
+      var lastFightFunc = document.querySelector('#fight-details-header--2-0').children[0].children[2].onload.toString();
 
       var parameters, fight, source;
       if(window.location.search != "") {
@@ -44,7 +45,17 @@
         parameters.forEach(function(parameter) {
           var keyvalue = parameter.split('=');
           if(keyvalue[0] == "fight") {
-            fight = keyvalue[1];
+            if(keyvalue[1] == "last") {
+              var trymatch = funcString.match(/changeFightByIDAndIndex\((\d+),/);
+              if (trymatch) {
+                fight = match[1];
+              } else {
+                fight = keyvalue[1];
+              }
+            }
+            else {
+              fight = keyvalue[1];
+            }
           }
           else if (keyvalue[0] == "source") {
             source = keyvalue[1];
