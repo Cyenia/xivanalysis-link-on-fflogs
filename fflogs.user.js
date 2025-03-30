@@ -34,7 +34,7 @@
 
       var parameters, fight, source;
       if(window.location.search != "") {
-        parameters = window.location.hash.replace('?', '').split('&');
+        parameters = window.location.search.replace('?', '').split('&');
       }
       else if(window.location.hash != "") {
         parameters = window.location.hash.replace('#', '').split('&');
